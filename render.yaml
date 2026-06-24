@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: healthcare-clinic-erp
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build:client && cd server && npm install && node seed.js
+    startCommand: cd server && node index.js
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
